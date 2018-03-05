@@ -8,6 +8,21 @@ import StorePicker from "./StorePicker";
 import NotFound from "./NotFound";
 
 class App extends React.Component {
+  state = {
+    fishes: {},
+    order: {}
+  };
+
+  addFish = fish => {
+    //Take a copy of the existing state
+    const fishes = { ...this.state.fishes };
+    //Add our new fish to that variable
+    fishes[`fish ${Date.now()}`] = fish;
+    //Set the new fishes object to state
+    //fishes: fishes
+    this.setState({ fishes });
+  };
+
   render() {
     return (
       <div>
@@ -25,7 +40,7 @@ class App extends React.Component {
             <Header tagline="Wes Is Cool" />
           </div>
           <Order />
-          <Inventory />
+          <Inventory addFish={this.addFish} />
         </div>
       </div>
     );
