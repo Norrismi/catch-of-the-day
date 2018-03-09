@@ -16,16 +16,26 @@ class App extends React.Component {
     order: {}
   };
 
+  
   // componentDidMount() {
-  //   const { params } = this.props.match;
-  //   this.ref = base.syncState(`${params.storeId}/fishes`, {
-  //     context: this,
-  //     state: "fishes"
-  //   });
-  // }
+    //   const { params } = this.props.match;
+    //   this.ref = base.syncState(`${params.storeId}/fishes`, {
+      //     context: this,
+      //     state: "fishes"
+      //   });
+      // }
+      
+      componentDidUpdate() {
+        console.log(this.state.order);
+        localStorage.setItem(
+          this.props.match.params.storeId,
+          JSON.stringify(this.state.order)
+        );
+      }
 
-  addFish = fish => {
-    //Take a copy of the existing state
+      
+      addFish = fish => {
+        //Take a copy of the existing state
     const fishes = { ...this.state.fishes };
     //Add our new fish to that variable
     fishes[`fish ${Date.now()}`] = fish;
