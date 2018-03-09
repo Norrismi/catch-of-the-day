@@ -8,12 +8,21 @@ import StorePicker from "./StorePicker";
 import NotFound from "./NotFound";
 import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
+import base from "../base";
 
 class App extends React.Component {
   state = {
     fishes: {},
     order: {}
   };
+
+  // componentDidMount() {
+  //   const { params } = this.props.match;
+  //   this.ref = base.syncState(`${params.storeId}/fishes`, {
+  //     context: this,
+  //     state: "fishes"
+  //   });
+  // }
 
   addFish = fish => {
     //Take a copy of the existing state
